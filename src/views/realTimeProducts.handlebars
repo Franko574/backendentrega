@@ -1,18 +1,50 @@
-<h1>Lista de Productos en Tiempo Real</h1>
-<ul id="product-list"></ul>
+<main class="rtproducts">
+  <h1> Vista de Productos en Tiempo Real</h1>
 
-<form id="product-form">
-  <input type="hidden" id="product-id">
-  <input type="text" id="product-name" placeholder="Nombre del Producto" required>
-  <input type="text" id="product-description" placeholder="Descripción" required>
-  <input type="text" id="product-code" placeholder="Código" required>
-  <input type="number" id="product-stock" placeholder="Stock" required>
-  <input type="number" id="product-price" placeholder="Precio" required>
-  <input type="text" id="product-category" placeholder="Categoría" required>
-  <input type="text" id="product-thumbnails" placeholder="Imágenes (ingrese la url)">
-  <button type="submit">Agregar producto</button>
-</form>
-  <a href="/"><button type="submit">Volver</button></a>
+  <div id="card-container" class="card-container">
+
+  </div>
+
+  <div class="formContainer">
+    <h2>Agregar Nuevo Producto</h2>
+    <div id="form-container" class="formContainer">
+    <form id="form" class="prodForm">
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Categoría:</label>
+            <input type="text" id="category" name="category" required>
+        </div>
+
+        <div class="form-group">
+            <label for="code">Código:</label>
+            <input type="text" id="code" name="code" required>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+        </div>
+
+        <button id="btn" type="submit">Guardar Producto</button>
+    </form>
+</div>
+
+</main>
+
 
 <script src="/socket.io/socket.io.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

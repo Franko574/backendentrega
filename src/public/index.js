@@ -1,6 +1,6 @@
 const socket = io();
 
-let username = null;
+/* let username = null;
 
 if(!username){
     Swal.fire({
@@ -62,4 +62,4 @@ inputMessage.addEventListener('keypress', ()=>{
 
 socket.on('chat:typing', (usernameTyp)=>{
     actions.innerHTML = `<p>${usernameTyp} is writing a message...</p>`
-})
+}) */

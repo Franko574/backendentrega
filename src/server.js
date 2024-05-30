@@ -49,6 +49,11 @@ const socketServer = new Server(httpServer);
 socketServer.on('connection', async(socket)=>{
     console.log('🟢 ¡New connection!', socket.id);
 
+    const products = await productManager.getProducts();  // Definir products aquí
+    socketServer.emit('productos', products);
+    console.log('productos enviados');
+
+    
     socketServer.emit('productos', await productManager.getProducts());
     console.log('productos enviados')
 
@@ -59,7 +64,7 @@ socketServer.on('connection', async(socket)=>{
     socket.on('Nuevo producto', async (newProduct)=>{
         productManager.addNewProduct(newProduct);
         const products = await productManager.getProducts();
-        socketServer.emit('productos ', products);
+        socketServer.emit('productos', products);
     });
 
     socket.on('chat:message', async(id) => {

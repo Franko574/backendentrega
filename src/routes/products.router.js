@@ -11,9 +11,9 @@ import {productValidator} from '../middlewares/product.Validator.js';
 router.get('/', async(req, res) => {
     try {
         const { limit } = req.query;
-        console.log(limit);
-        const products = await productManager.getProducts(limit);
-        res.status(200).json(products);
+        /* console.log(limit); */
+        const product = await productManager.getProducts(limit);
+        !product ? res.status(404).json({ error: "Products not found" }) : res.status(200).json(product);
     } catch (error) {
         res.status(404).json({ message: error.message });
         console.log(error);
