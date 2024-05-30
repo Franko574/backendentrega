@@ -4,7 +4,7 @@ const router = Router();
 import { __dirname } from "../path.js";
 
 import ProductManager from "../managers/product.manager.js";
-const productManager = new ProductManager(`${__dirname}/db/products.json`);
+const productManager = new ProductManager(`${__dirname}/data/products.json`);
 
 import {productValidator} from '../middlewares/product.Validator.js';
 
@@ -75,4 +75,4 @@ router.delete('/', async(req, res)=>{
     }
 });
 
-export default router;
+export default router; 

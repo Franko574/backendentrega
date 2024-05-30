@@ -1,0 +1,12 @@
+<h1>HOME</h1>
+<ul>
+    {{#each products}}
+    <li>
+        <strong>{{this.title}}</strong> - ${{this.price}}
+        {{#each this.thumbnails}}
+        <img class="img-home" src="{{this}}">
+    </li>
+    {{/each}}
+</ul>
+
+<a href="/src/views/realTimeProducts.handlebars"><button>Añadir Productos</button></a>

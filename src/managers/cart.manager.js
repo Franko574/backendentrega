@@ -3,7 +3,7 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 import ProductManager from "./product.manager.js";
-const productManager = new ProductManager(`${__dirname}/db/products.json`);
+const productManager = new ProductManager(`${__dirname}/data/products.json`);
 
 export default class CartManager {
   constructor(path) {
@@ -76,4 +76,4 @@ export default class CartManager {
       console.log(error);
     }
   }
-}
+} 
