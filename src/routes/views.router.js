@@ -1,24 +1,18 @@
-import { Router } from "express";
-import { __dirname } from "../path.js"; 
-import ProductManager from "../managers/product.manager.js";
+import { Router } from 'express';
+import * as controller from '../controllers/users.controllers.js';
 
 const router = Router();
 
-const productManager = new ProductManager(`${__dirname}/db/products.json`);
+router.get('/all', controller.getAll);
 
-router.get("/", async (req, res) => {
-    try {
-      const { limit } = req.query;
-      const product = await productManager.getProducts(limit);
-      res.render("home", { product });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  });
+router.get('/:id', controller.getById);
 
-router.get('/realtimeproducts', (req, res) => {
-    res.render('realtimeproducts')
-});
+router.post('/', controller.create);
 
-export default router; 
+router.put('/:id', controller.update);
 
+router.delete('/:id', controller.remove);
+
+
+
+export default router;

@@ -1,5 +1,36 @@
 import express from 'express';
 import morgan from 'morgan';
+import userRouter from './routes/users.router.js';
+import productRouter from './routes/product.router.js';
+import cartRouter from './routes/cart.router.js';
+import { errorHandler } from './middlewares/errorHandler.js';
+import { initMongoDB } from './db/database.js';
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(morgan('dev'));
+
+app.use('/users', userRouter);
+app.use('/products', productRouter);
+app.use('/carts', cartRouter);
+
+app.use(errorHandler);
+
+initMongoDB();
+
+const PORT = 8080;
+
+app.listen(PORT, () => console.log(`SERVER UP ON PORT ${PORT}`));
+
+
+
+
+
+
+/* import express from 'express';
+import morgan from 'morgan';
 import { __dirname } from './path.js'
 import { Server } from 'socket.io';
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -8,43 +39,43 @@ import handlebars from 'express-handlebars';
 import viewsRouter from './routes/views.router.js';
 import cartRouter from './routes/cart.router.js'
 import productsRouter from './routes/products.router.js'; /* Revisar error SyntaxError: The requested module './routes/cart.router.js' does not provide an export named 'default' */
-import ProductManager from './managers/product.manager.js'; 
+/* import ProductManager from './managers/product.manager.js';  */
 
 /* Entrega 29.5----------------------------------------------------------------------- */
 /* import { __dirname } from './utils.js'; */
 /* Entrega 29.5----------------------------------------------------------------------- */
 
-const productManager = new ProductManager(`${__dirname}/data/products.json`);
+/* const productManager = new ProductManager(`${__dirname}/data/products.json`);
 const app = express()
-
-
+ */
+/* 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(morgan('dev'))
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public')) */
 
 /* Entrega 29.5----------------------------------------------------------------------- */
-app.engine('handlebars', handlebars.engine()); 
+/* app.engine('handlebars', handlebars.engine()); 
 app.set('view engine', 'handlebars');  
-app.set('views', __dirname+'/views');
+app.set('views', __dirname+'/views'); */
 /* Entrega 29.5----------------------------------------------------------------------- */  
-
+/* 
 app.use('/', viewsRouter);
 app.use('/api/carts', cartRouter);
-app.use('/api/products', productsRouter); /*  Revisar error */
+app.use('/api/products', productsRouter); */ /*  Revisar error */
 
 /* Entrega 29.5----------------------------------------------------------------------- */
 /* Entrega 29.5----------------------------------------------------------------------- */
 
 
-app.use(errorHandler);
+/* app.use(errorHandler);
 
 const httpServer = app.listen(8080, ()=>{
     console.log('Server listening on port 8080');
 });
-
+ */
 /* Entrega 29.5----------------------------------------------------------------------- */
-const socketServer = new Server(httpServer);
+/* const socketServer = new Server(httpServer);
 
 socketServer.on('connection', async(socket)=>{
     console.log('🟢 ¡New connection!', socket.id);
@@ -80,6 +111,6 @@ socketServer.on('connection', async(socket)=>{
     
     
 })
+ */
 
-
-/* Entrega 29.5----------------------------------------------------------------------- */
+/* Entrega 29.5----------------------------------------------------------------------- */ 
